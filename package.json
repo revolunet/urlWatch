@@ -1,7 +1,6 @@
 {
     "name": "urlWatch",
     "version": "0.0.1",
-    "private": false,
     "dependencies": {
         "nodemailer": "0.1.5",
         "colors": "0.6.0-1"
