@@ -50,7 +50,11 @@ urlWatch.prototype.directoryPath = '/tmp';
 
 
 urlWatch.prototype.merge = function(obj1, obj2) {
-    for (var key in obj2) obj1[key] = obj2[key];
+    for (var key in obj2) {
+        if (obj2.hasOwnProperty(key)) {
+            obj1[key] = obj2[key];
+        }
+    }
     return obj1;
 };
 
@@ -86,7 +90,6 @@ urlWatch.prototype.getRemoteFileContent = function(callback) {
             me.log('--> remote file fetched:', 'YES'.green);
             callback.call(me, tmp.join(''));
         });
-
     });
 
     req.on('error', function(error) {
@@ -112,7 +115,7 @@ urlWatch.prototype.checkFilesHashDiff = function() {
     if (this.md5(this.remoteFileContent) === this.md5(this.localFileContent)) {
         this.log('--> files are different:', 'NO'.red);
         return false;
-    } else  {
+    } else {
         this.log('--> files are different:', 'YES'.green);
         return true;
     }
