@@ -9,16 +9,16 @@
 var urlWatch = require('urlWatch');
 
 new urlWatch({
-    smtp: 'smtp.numericable.fr',
+    smtp: 'my.smtp.com',
     curlConfig: {
-        host: 'office.revolunet.com',
+        host: 'my.domaine.com',
         port: 80,
-        path: '/juju/xml/auwohMae4nohph5V.xml',
+        path: '/target/file/path',
         method: 'POST',
     },
     mailConfig: {
-        sender: 'contact@revolunet.com',
-        to: 'goldledoigt@chewam.com',
+        sender: 'sender@mail.com',
+        to: 'receiver@mail.com',
         subject: 'urlWatch'
     }
 });
