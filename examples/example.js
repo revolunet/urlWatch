@@ -58,4 +58,6 @@ var items = [{
     }
 }];
 
-for (var i = 0, l = items.length; i < l; i++) new urlWatch(items[i]);
+for (var i = 0, l = items.length; i < l; i++) {
+    (new urlWatch(items[i])).run();
+}

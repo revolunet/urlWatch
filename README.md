@@ -2,13 +2,13 @@
 
     npm install urlWatch
 
-## USAGE
+## SIMPLE USAGE
 
 ``` js
 
 var urlWatch = require('urlWatch');
 
-new urlWatch({
+var options = {
     smtp: 'my.smtp.com',
     curlConfig: {
         host: 'my.domaine.com',
@@ -21,8 +21,12 @@ new urlWatch({
         to: 'receiver@mail.com',
         subject: 'urlWatch'
     }
-});
+};
+
+var watcher = new urlWatch(options);
+
+watcher.run();
 
 ```
 
-Take a look to `examples` for more complex usage.
+Take a look to `examples` for more complex usages.

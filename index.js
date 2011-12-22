@@ -7,8 +7,21 @@ var fs = require('fs'),
 
 
 var urlWatch = module.exports = function(config) {
+    this.applyConfig(config);
+};
+
+
+urlWatch.prototype.log = function() {};
+
+
+urlWatch.prototype.directoryPath = '/tmp';
+
+
+urlWatch.prototype.applyConfig = function(config) {
 
     this.merge(this, config);
+
+    this.initialConfig = config;
 
     nodemailer.SMTP = {host: this.smtp};
 
@@ -17,7 +30,10 @@ var urlWatch = module.exports = function(config) {
 
     this.localFilePath = this.directoryPath + '/' + this.fileName;
     this.remoteFilePath = this.directoryPath + '/' + this.fileName + '_tmp';
+};
 
+
+urlWatch.prototype.run = function() {
     this.getRemoteFileContent(function(content) {
         this.remoteFileContent = content;
         this.localFileContent = this.getLocalFileContent();
@@ -39,14 +55,7 @@ var urlWatch = module.exports = function(config) {
         }
 
     });
-
-};
-
-
-urlWatch.prototype.log = function() {};
-
-
-urlWatch.prototype.directoryPath = '/tmp';
+}
 
 
 urlWatch.prototype.merge = function(obj1, obj2) {
