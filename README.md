@@ -6,7 +6,7 @@
 
 ``` js
 
-var urlWatch = require('../index.js');
+var urlWatch = require('urlWatch');
 
 new urlWatch({
     smtp: 'smtp.numericable.fr',
